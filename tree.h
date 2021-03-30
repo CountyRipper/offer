@@ -1,5 +1,6 @@
 #include <vector>
 #include <iostream>
+#include<queue>
 //父子结点单项结点树的链表实现
 using namespace std;
 template <class E>
@@ -80,4 +81,20 @@ void backtravelre(node<E>* t)
         midtravelre(cur->right);
     }
     cur->print();
+}
+//层次遍历
+template <class E>
+void layertravel(node<E>* t){
+    queue<node<E>*> q1;
+    node<E> *cur = t;
+    q1.push(cur);
+    while(q1.size()!=0){
+        cur->print();
+        if(cur->left) q1.push(cur->left);
+        if(cur->right) q1.push(cur->right);
+        
+        q1.pop();
+        cur=q1.front();
+        
+    }
 }

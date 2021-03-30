@@ -13,6 +13,7 @@ int main(int argc, char const *argv[])
     midtravelre(t.root);
     cout<<endl;
     backtravelre(t.root);
-
+    cout<<endl;
+    layertravel(t.root);
     return 0;
 }
