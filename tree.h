@@ -158,3 +158,27 @@ void pretravel_2(node<E> *t)
         }
     }
 }
+//中序遍历非递归
+//先一次从左边入栈，到没有左节点了，弹出后，观察上一结点是否有右边子树
+//有的话，先把该节点遍历后，出栈然后把右儿子压入栈，继续返回到检查左儿子的循环中
+//关键点是在遍历之后该节点弹出，但是t依旧是已经弹出的那个节点，而不是弹出之后当前栈顶的结点。
+//所以它的右儿子判定不会是无限循环
+template<class E>
+void midtravel_1(node<E>* t){
+    stack<node<E>*> s1;
+    while(t!=nullptr||!s1.empty()){
+        if(t!=nullptr){
+            s1.push(t);
+            t=t->left;
+        }
+        else{
+            t=s1.top();
+            t->print();
+            s1.pop();
+            t=t->right;
+        }
+        
+
+    }
+
+}
