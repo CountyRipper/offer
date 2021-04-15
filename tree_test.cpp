@@ -15,5 +15,9 @@ int main(int argc, char const *argv[])
     backtravelre(t.root);
     cout<<endl;
     layertravel(t.root);
+    cout<<"非递归："<<endl;
+    pretravel_1(t.root);
+    cout<<endl;
+    pretravel_2(t.root);
     return 0;
 }
