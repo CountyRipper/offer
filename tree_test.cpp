@@ -22,5 +22,7 @@ int main(int argc, char const *argv[])
     cout<<endl<<"中序:";
     midtravel_1(t.root);
     cout<<endl<<"后序：";
+    backtravel_1(t.root);
+    //cout<<endl<<"后序非递归
     return 0;
 }

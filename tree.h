@@ -74,12 +74,12 @@ void backtravelre(node<E> *t)
     node<E> *cur = t;
     if (cur->left != nullptr)
     {
-        midtravelre(cur->left);
+        backtravelre(cur->left);
     }
 
     if (cur->right != nullptr)
     {
-        midtravelre(cur->right);
+        backtravelre(cur->right);
     }
     cur->print();
 }
@@ -181,4 +181,31 @@ void midtravel_1(node<E>* t){
 
     }
 
+}
+//后序遍历非递归实现，双栈版
+//不需要使用额外tag标记，原理在于，后序遍历是left-right-root，
+//将先序遍历的(右左树)的结果(root-right-left)存在栈之后反序输出正好得到的就是所求遍历顺序
+template <class E>
+void backtravel_1(node<E>* t){
+    stack<node<E>*> s1;//用于先序遍历
+    stack<node<E>*> s2;//用于输出后序遍历
+    while(t!=nullptr||!s1.empty()){
+        if(t!=nullptr){
+            //先序遍历
+            s1.push(t);
+            s2.push(t);
+            t=t->right;//注意是右左，不是左右
+        }
+        else{
+            t=s1.top();
+            s1.pop();
+            t=t->left;//进入左子树
+        }
+    }
+    while(!s2.empty()){
+        //遍历操作
+        t=s2.top();
+        t->print();
+        s2.pop();
+    }
 }
