@@ -11,11 +11,13 @@ public:
     E element;
     node *left;
     node *right;
-    node(E ele, node *l = nullptr, node *r = nullptr)
+    node *parent;
+    node(E ele, node *l = nullptr, node *r = nullptr, node* p = nullptr)
     {
         this->element = ele;
         this->left = l;
         this->right = r;
+        this->parent = p;
     }
     node();
     void print()
