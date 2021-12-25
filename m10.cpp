@@ -1,20 +1,29 @@
 #include<bits/stdc++.h>
 using namespace std;
 int minArray(vector<int>& numbers) {
-        int mid=(numbers.size()-1)/2;
-        int left = 0;
-        int right = numbers.size()-1;
-        while(left!=right){
-            if(numbers[mid]<numbers[left]){//如果出现了旋转
-                right = mid;
-                mid = (left+right)/2-1;
+        int size = numbers.size();
+    if (size == 0) return 0;
+    int left = 0, right = size - 1;
+    int mid = (left + right) / 2;
+    while (left < right) {
+        if (right - left == 1) return min(numbers[left], numbers[right]);
+        if (numbers[mid] == numbers[right] && numbers[mid] == numbers[left]) {
+            int min = numbers[left];
+            for (int i = left; i < right;i++) {
+                if (numbers[i] < min) min = numbers[i];
             }
-            else{
-                left = mid;
-                mid = (left+right)/2+1;
-            }
+            return min;
         }
-        return numbers[mid];
+        if (numbers[mid] > numbers[right]) {
+            left = mid;
+            mid = (left + right) / 2;
+        }
+        else {
+            right = mid;
+            mid = (left + right) / 2;
+        }
+    }
+    return numbers[left];
 }
 int main(){
     vector<int> a1 = {3,5,1};
