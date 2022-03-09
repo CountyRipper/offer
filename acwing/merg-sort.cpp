@@ -2,15 +2,11 @@
 using namespace std;
 // 1.使用递归的方式分裂数组
 //2.合并时使用双指针从小到大
-void mergesort(){
-
-}
 void merge(vector<int> &a,int l,int mid,int r){
     vector<int> tmp;//开辟临时数组
     int i=l,j=mid+1;
     while(i<=mid&&j<=r){
         if(a[i]<=a[j]){
-            tmp.push_back(a[i++]);
         }
         else{
             tmp.push_back(a[j++]);
