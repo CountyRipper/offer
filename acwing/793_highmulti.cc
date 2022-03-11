@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>>
+#include<bits/stdc++.h>
 using namespace std;
 //非负数考虑
 string highadd_str(string &s1,string &s2);
@@ -31,23 +31,24 @@ string highmulti(string &s1,string &s2){
         if(tmp) res1.push_back(tmp+'0');
         //顺序的str参数，res和res1都是倒序
         res = highadd_str(res, res1);
+        res.reserve();
     }
     return res;
 }
 string highadd_str(string &s1,string &s2){
-    if(s1.empty())return s2;
+    if(s1.empty()) return s2;
     if(s2.empty()) return s1;
     if(s1.empty()&&s2.empty()) return "\0";
     else{
         string res;
         int tmp=0;
         for(int i=0;i<max(s1.size(),s2.size());i++){
-            if(i<s1.size()) tmp+=(s1[0]-'0');
-            if(i<s2.size()) tmp+=(s2[0]-'0');
+            if(i<s1.size()) tmp+=(s1[i]-'0');
+            if(i<s2.size()) tmp+=(s2[i]-'0');
             res.push_back((tmp%10)+'0');
             tmp /=10;
-            if(tmp) res.push_back(tmp+'0');
         }
+        if(tmp) res.push_back(tmp+'0');
         return res;
     }
 }
