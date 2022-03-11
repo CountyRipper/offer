@@ -17,6 +17,7 @@ int main() {
     for (int i = 0; i < m; i++) {
         int j, k;
         cin >> j >> k;
+    //一定要注意s的寻址顺序
         cout << s[k] - s[j - 1] << endl;
     }
 }
