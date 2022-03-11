@@ -34,6 +34,7 @@ string highmulti(string &s1,string &s2){
         res.reserve();
     }
     return res;
+    
 }
 string highadd_str(string &s1,string &s2){
     if(s1.empty()) return s2;
