@@ -11,8 +11,8 @@ int main(){
     }
     int r=0;
     auto res = highdiv(a,b,r);
-    for(auto &&i:res){
-        cout<<i;
+    for(vector<int>::reverse_iterator ri=res.rbegin();ri!=res.rend();ri++){
+        cout<<*ri;
     }
     cout<<endl<<r;
 }
