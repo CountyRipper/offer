@@ -1,29 +1,21 @@
 #include<bits/stdc++.h>
 using namespace std;
+const int N = 100010;
+int dic[N], a[N];
 int main() {
-    int dic[100001];
     int n;
     scanf("%d", &n);
-    int* a = new int[n];
     for (int i = 0;i < n;i++) {
         scanf("%d", &a[i]);
     }
-    int q = 0, p = 0, max = 0, t = 0;
-    do{
-        if (dic[a[p]] == 0) {
-            dic[a[p]] = 1;
-            p++;
-            t++;
+    int max = 0;
+    for(int i=0,j=0;i<n;i++){
+        dic[a[i]]++;
+        while (dic[a[i]] > 1) {
+            dic[a[j]]--;
+            j++;
         }
-        else {
-            for(int i =q; i<p;i++){
-                dic[a[i]] = 0;
-            }
-            q = p;
-            p++;
-            t = 1;
-        }
-        if (t > max) max = t;
-    }while(p<n);
-    printf("%d\n",max);
+        if ((i - j + 1) > max) max = (i - j + 1);
+    }
+    printf("%d\n", max);
 }
