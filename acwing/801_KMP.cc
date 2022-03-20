@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 char a[100010], b[100010],kmpnext[100010];
+<<<<<<< HEAD
 //第一种next数组算法
 void getnext1(char *b,char kmpnext[],int m){
     //m是字符串长度
@@ -14,6 +15,17 @@ void getnext1(char *b,char kmpnext[],int m){
             k++;
         }
         kmpnext[i] = k;
+=======
+void getnext(char *b,char *kmpnext,int m){
+    kmpnext[0] = 0;
+    for(int i=1,j=0; i<m;i++){
+        j = kmpnext[i-1];
+        while(b[i]!=b[j]&&j>0){
+            j = kmpnext[j-1];
+        }
+        if(b[i]==b[j]){j++;}
+        kmpnext[i] = j;
+>>>>>>> 7847498aa0d6844a816d6bafcc31f352a54bdc72
     }
 }
 //第二种next算法
@@ -22,10 +34,9 @@ void getnext2(char *b,char kmpnext[],int m){
 }
 int main(){
     int n,m;
-    scanf("%d",&n );
-    scanf("%s", a);
     scanf("%d",&m );
     scanf("%s", b);
+<<<<<<< HEAD
     
     getnext1(b,kmpnext,m);
     for(int i = 0,j=0; i < n ;i++)
@@ -36,6 +47,18 @@ int main(){
         }
         if(a[i]==b[j]){
             j++;
+=======
+    scanf("%d",&n );
+    scanf("%s", a);
+    getnext(b,kmpnext,m);
+    for(int i=0,j=0;i<n;i++){
+        while(a[i]!=b[j]&&j>0){
+            j = kmpnext[j-1];
+        }
+        if(a[i]==b[j]) j++;
+        if(j == m){
+            printf("%d ",(i-m+1));
+>>>>>>> 7847498aa0d6844a816d6bafcc31f352a54bdc72
         }
         //匹配上了，输出,m比位置大1所以要+1
         if(j == m) printf("%d ",i-m+1);
