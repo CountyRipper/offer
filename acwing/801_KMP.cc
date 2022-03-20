@@ -2,38 +2,30 @@
 using namespace std;
 char a[100010], b[100010],kmpnext[100010];
 void getnext(char *b,char *kmpnext,int m){
-    int i = 0, j =1;
-    for(; i<m;i++){
-        if(b[i]!=b[j]){
-            kmpnext[j]=0;
-            j=0;
+    kmpnext[0] = 0;
+    for(int i=1,j=0; i<m;i++){
+        j = kmpnext[i-1];
+        while(b[i]!=b[j]&&j>0){
+            j = kmpnext[j-1];
         }
-        else{
-            //能匹配上
-            kmpnext[j++] = j+1;
-        }
+        if(b[i]==b[j]){j++;}
+        kmpnext[i] = j;
     }
 }
 int main(){
     int n,m;
-    scanf("%d",&n );
-    scanf("%s", a);
     scanf("%d",&m );
     scanf("%s", b);
-    int i = 0,j=0;
+    scanf("%d",&n );
+    scanf("%s", a);
     getnext(b,kmpnext,m);
-    while(i<(n-m))
-    {
-        if(a[i]==b[j]&&j<m){j++;i++;}
-        else{
-            //如果失配
-            i = i+ kmpnext[j];
-            j = 0;
+    for(int i=0,j=0;i<n;i++){
+        while(a[i]!=b[j]&&j>0){
+            j = kmpnext[j-1];
         }
+        if(a[i]==b[j]) j++;
         if(j == m){
-            printf("%d ",i);
-            j=0;
-            i++;
+            printf("%d ",(i-m+1));
         }
     }
 }
