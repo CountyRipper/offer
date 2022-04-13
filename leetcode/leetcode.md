@@ -44,7 +44,7 @@
 
 21、K 个一组翻转链表（ LeetCode 25 ）
 
-22、回文链表（ LeetCode 234 ）
+√22、回文链表（ LeetCode 234 ）
 
 23、奇偶链表（ LeetCode 328 ）
 
