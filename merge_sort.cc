@@ -6,6 +6,7 @@ void merge(int *a,int l, int mid, int r){
     int i = l, j = mid + 1;
     int n = 0;
     int tmp[(r-l+1)];
+    //int *tmp = new int[(r-l+1)]
     while (i <= mid && j <= r) {
         if (a[i] < a[j]) tmp[n++] = a[i++];
         else tmp[n++] = a[j++];
