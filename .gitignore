@@ -33,3 +33,5 @@
 *.vscode
 *exe
 *out
+*compare
+*DS_Store
