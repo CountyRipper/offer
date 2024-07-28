@@ -15,13 +15,13 @@ int main(int argc, char const *argv[])
     backtravelre(t.root);
     cout<<endl;
     layertravel(t.root);
-    cout<<endl<<"非递归："<<endl<<"前序1：";
+    cout<<endl<<"非递归："<<endl<<"前序1: ";
     pretravel_1(t.root);
-    cout<<endl<<"前序2：";
+    cout<<endl<<"前序2: ";
     pretravel_2(t.root);
-    cout<<endl<<"中序:";
+    cout<<endl<<"中序: ";
     midtravel_1(t.root);
-    cout<<endl<<"后序：";
+    cout<<endl<<"后序: ";
     backtravel_1(t.root);
     //cout<<endl<<"后序非递归
     return 0;
